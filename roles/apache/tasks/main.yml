@@ -1,0 +1,33 @@
+---
+# tasks file for apache
+  - name: Install apache
+    ansible.builtin.dnf:
+      name: httpd
+      state: latest
+
+  - name: Start service
+    ansible.builtin.service:
+      name: httpd
+      state: started
+      enabled: true
+
+  - name: Start sevice Firewalld
+    ansible.builtin.service:
+      name: firewalld
+      state: restarted
+      enabled: true
+
+  - name: Permanently enable https service, also enable it immediately if possible
+    ansible.posix.firewalld:
+      service: http
+      state: enabled
+      permanent: true
+      immediate: true
+
+  - name: Template a file
+    ansible.builtin.template:
+      src: /home/dimas/prova_ex294_final/roles/apache/templates/template.j2
+      dest: /var/www/html/index.html
+
+
+

@@ -1,0 +1,6 @@
+---
+  - name: Use apache role
+    hosts: dev
+    become: true
+    roles:
+      - apache
