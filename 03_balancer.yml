@@ -1,0 +1,13 @@
+---
+- name: Deploy haproxy role on balancer group
+  hosts: balancer
+  become: true
+  roles:
+    - balancer
+
+- name: Deploy phpinfo role on webserver group
+  hosts: webserver
+  become: true
+  roles:
+    - phpinfo
+

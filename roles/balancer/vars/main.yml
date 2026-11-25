@@ -1,0 +1,14 @@
+firewall_rules:
+  - port: 8080/tcp
+  - zone: public
+    service: http
+    source: servere
+
+aproxy_appservers:
+  - name: serverb
+    ip: serverb
+    backend_port: 80
+
+  - name: serverc
+    ip: serverc
+    backend_port: 80
